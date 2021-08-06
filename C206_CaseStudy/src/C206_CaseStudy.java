@@ -12,7 +12,7 @@ public class C206_CaseStudy {
 
 		int option = 0;
 
-		while (option != 6) {
+		while (option != 5) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
@@ -50,10 +50,10 @@ public class C206_CaseStudy {
 			else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
 
-			} else if (option == 5) {
-			} else if (option == 6) {
-			}
-			System.out.println("Bye!");
+			} else {
+				System.out.println("Bye!");
+			} 
+			
 		}
 
 	}
@@ -64,8 +64,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Add new currencies");
 		System.out.println("3.Delete currency");
 		System.out.println("4. Search for holding of currency");
-		System.out.println("5. Add walk-in exchange transaction");
-		System.out.println("6. Quit");
+		System.out.println("5. Quit");
 		Helper.line(80, "-");
 
 	}
@@ -103,7 +102,7 @@ public class C206_CaseStudy {
 		System.out.println("Currency added");
 	}
 
-	// ================================= Option 1 Delete
+	// ================================= Option 3 Delete
 	// =================================
 
 	// ================================= Option 4 Search
