@@ -6,6 +6,9 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
+		
+		currencyList.add(new Currency("SGD", "Singapore", 2.8, 3.4));
+		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
 
 		int option = 0;
 
