@@ -4,7 +4,7 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 
 		int option = 0;
@@ -20,6 +20,7 @@ public class C206_CaseStudy {
 			} else if (option == 2) {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");
+				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -27,7 +28,7 @@ public class C206_CaseStudy {
 					// Add a currency
 					Currency c = inputCurrency();
 					C206_CaseStudy.addCurrency(currencyList, c);
-					
+
 				} else if (itemType == 2) {
 					// Add holdings
 
@@ -64,6 +65,12 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 		Helper.line(80, "-");
 
+	}
+
+	private static void itemTypeMenu() {
+		System.out.println("1. Add Currency");
+		System.out.println("2. Add Holdings");
+		System.out.println("3. Add walk in exchange transactions");
 	}
 
 	public static void setHeader(String header) {
