@@ -99,7 +99,7 @@ public class C206_CaseStudy {
 	public static void addCurrency(ArrayList<Currency> currencyList, Currency c) {
 
 		currencyList.add(c);
-		System.out.println("Currency added");
+		System.out.println("Currency added!");
 	}
 
 	// ================================= Option 3 Delete
