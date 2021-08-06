@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 
 		int option = 0;
 
@@ -22,10 +25,13 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// Add a currency
+					Currency c = inputCurrency();
+					C206_CaseStudy.addCurrency(currencyList, c);
+					
 				} else if (itemType == 2) {
 					// Add holdings
 
-				}else if (itemType == 3) {
+				} else if (itemType == 3) {
 					// Add walk in exchange transaction
 
 				} else {
@@ -65,12 +71,32 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	//================================= Option 1 View =================================
-	
-	//================================= Option 2 View =================================
-	
-	//================================= Option 1 Delete =================================
-	
-	//================================= Option 4 Search =================================
-	
+	// ================================= Option 1 View
+	// =================================
+
+	// ================================= Option 2 View
+	// =================================
+	public static Currency inputCurrency() {
+		String currencyISO = Helper.readString("Enter currency ISO > ");
+		String currencyName = Helper.readString("Enter currency name  > ");
+		double buyRate = Helper.readDouble("Enter buy rate > ");
+		double sellRate = Helper.readDouble("Enter sell rate >");
+
+		Currency c = new Currency(currencyISO, currencyName, buyRate, sellRate);
+		return c;
+
+	}
+
+	public static void addCurrency(ArrayList<Currency> currencyList, Currency c) {
+
+		currencyList.add(c);
+		System.out.println("Currency added");
+	}
+
+	// ================================= Option 1 Delete
+	// =================================
+
+	// ================================= Option 4 Search
+	// =================================
+
 }
