@@ -7,13 +7,13 @@ public class C206_CaseStudy {
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 
-		currencyList.add(new Currency("SGD", "Singapore", 2.8, 3.4));
-		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
+		currencyList.add(new Currency("SGD", 100000.00, "Singapore", 2.8, 3.4));
+		currencyList.add(new Currency("EUR", 100000.00, "Europe", 3.0, 3.5));
 
 		int option = 0;
 		C206_CaseStudy.menu();
 		option = Helper.readInt("Enter an option > ");
-		while (option != 5) {
+		while (option != 6) {
 
 			
 
@@ -25,8 +25,15 @@ public class C206_CaseStudy {
 				int viewType = Helper.readInt("Enter option to select item type > ");
 
 				if(viewType == 1) {
+					for (int i = 0; i < currencyList.size(); i++) {
+						String iso = currencyList.get(i).getCurrencyISO();	
+						double holding = currencyList.get(i).getHoldings();
+						System.out.println("Our company currently holds "+ holding + " "+iso);
+					}
+
 					
 				} else if (viewType == 2) {
+
 					
 				} else if (viewType == 3) {
 					C206_CaseStudy.setHeader("VIEW COMPANY AMOUNT IN CURRENCIES");
@@ -77,7 +84,7 @@ public class C206_CaseStudy {
 			}
 
 			else if (option == 4) {
-				C206_CaseStudy.setHeader("SEARCH");
+				C206_CaseStudy.setHeader("SEARCH");				
 
 			} else {
 				System.out.println("Bye!");
@@ -94,10 +101,11 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("MONEY EXCHANGE MANAGEMENT SYSTEM");
 		System.out.println("1. View list of currencies");
 		System.out.println("2. Add new currencies");
-		System.out.println("3.Delete currency");
+		System.out.println("3. Delete currency");
 		System.out.println("4. Search for holding of currency");
+		System.out.println("5. Edit holdings");
 		 
-		System.out.println("5. Quit");
+		System.out.println("6. Quit");
 		Helper.line(80, "-");
 
 	}
@@ -128,10 +136,11 @@ public class C206_CaseStudy {
 	public static Currency inputCurrency() {
 		String currencyISO = Helper.readString("Enter currency ISO > ");
 		String currencyName = Helper.readString("Enter currency name  > ");
+		double currentHoldings = Helper.readDouble("Enter current holdings > ");
 		double buyRate = Helper.readDouble("Enter buy rate > ");
 		double sellRate = Helper.readDouble("Enter sell rate >");
 
-		Currency c = new Currency(currencyISO, currencyName, buyRate, sellRate);
+		Currency c = new Currency(currencyISO, currentHoldings, currencyName, buyRate, sellRate);
 		return c;
 
 	}
