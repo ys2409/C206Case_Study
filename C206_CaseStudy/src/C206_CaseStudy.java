@@ -11,11 +11,11 @@ public class C206_CaseStudy {
 		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
 
 		int option = 0;
-
+		C206_CaseStudy.menu();
+		option = Helper.readInt("Enter an option > ");
 		while (option != 6) {
 
-			C206_CaseStudy.menu();
-			option = Helper.readInt("Enter an option > ");
+			
 
 			if (option == 1) {
 				// View all items
@@ -73,6 +73,8 @@ public class C206_CaseStudy {
 				System.out.println("Bye!");
 			}
 
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Enter an option > ");
 		}
 
 	}
