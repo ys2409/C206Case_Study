@@ -6,13 +6,13 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
-		
+
 		currencyList.add(new Currency("SGD", "Singapore", 2.8, 3.4));
 		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
 
 		int option = 0;
 
-		while (option != 5) {
+		while (option != 6) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
@@ -50,10 +50,29 @@ public class C206_CaseStudy {
 			else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
 
+			} else if (option == 5) {
+				C206_CaseStudy.setHeader("VIEW COMPANY $$");
+
+				//Assuming original company money is in sgd currency
+				double EURcompanyMoney = 100000.00;
+				for (int i = 0; i < currencyList.size(); i++) {
+					if (currencyList.get(i).getCurrencyISO() == "EUR") {
+						System.out.println("Original Currency: " + currencyList.get(i).getCurrencyName());
+						System.out.println(
+								currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", EURcompanyMoney));
+					} else {
+						double convertedAmt = EURcompanyMoney * currencyList.get(i).getSellRate();
+						System.out.println("Currency: " + currencyList.get(i).getCurrencyName());
+						System.out.println(
+								currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", convertedAmt));
+					}
+					System.out.println(" ");
+				}
+
 			} else {
 				System.out.println("Bye!");
-			} 
-			
+			}
+
 		}
 
 	}
@@ -64,7 +83,8 @@ public class C206_CaseStudy {
 		System.out.println("2. Add new currencies");
 		System.out.println("3.Delete currency");
 		System.out.println("4. Search for holding of currency");
-		System.out.println("5. Quit");
+		System.out.println("5. View how much money company is currently holding");
+		System.out.println("6. Quit");
 		Helper.line(80, "-");
 
 	}
