@@ -25,13 +25,13 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// View currency
+					// View currency -faz
 
 				} else if (itemType == 2) {
-					// View holdings
+					// View holdings -royce
 
 				} else if (itemType == 3) {
-					// View company money
+					// View company money -ys
 
 				} else {
 					System.out.println("Invalid type");
@@ -39,22 +39,22 @@ public class C206_CaseStudy {
 
 				
 			} else if (option == 2) {
-				// Add a new item
+				// Add a new item 
 				C206_CaseStudy.setHeader("ADD");
 				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// Add currency
+					// Add currency -faz
 					Currency c = inputCurrency();
 					C206_CaseStudy.addCurrency(currencyList, c);
 
 				} else if (itemType == 2) {
-					// Add holdings
+					// Add holdings -royce
 
 				} else if (itemType == 3) {
-					// Add walk in exchange transaction
+					// Add walk in exchange transaction - izwan
 
 				} else {
 					System.out.println("Invalid type");
@@ -67,10 +67,10 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// delete currency
+					// delete currency - faz
 
 				} else if (itemType == 2) {
-					// delete holdings
+					// delete holdings - royce
 
 				} else {
 					System.out.println("Invalid type");
@@ -82,10 +82,10 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// Search for holding
+					// Search for holding - ys
 
 				} else if (itemType == 2) {
-					// Search currency rates
+					// Search currency rates - dom
 
 				} else {
 					System.out.println("Invalid type");
