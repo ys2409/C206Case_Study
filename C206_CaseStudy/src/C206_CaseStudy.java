@@ -13,12 +13,12 @@ public class C206_CaseStudy {
 		int option = 0;
 
 		while (option != 5) {
-
+			
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-				// View all items
+
 				C206_CaseStudy.setHeader("View");
 				itemTypeMenu1();
 
@@ -37,6 +37,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
+				
 			} else if (option == 2) {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");
@@ -74,13 +75,10 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-
-			}
-
-			else if (option == 4) {
+			}else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
 				itemTypeMenu3();
-
+				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -92,10 +90,10 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-
 			} else {
 				System.out.println("BYE!");
 			}
+
 		}
 
 	}
@@ -107,15 +105,15 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete All ");
 		System.out.println("4. Search All");
 		System.out.println("5. Quit");
-		Helper.line(80, "-");
 
 	}
 
 	private static void itemTypeMenu() {
 		System.out.println("1. Add Currency");
 		System.out.println("2. Add Holdings");
-		System.out.println("3. Add walk in exchange transactions");
+		System.out.println("3. Add walk in exchange transactions \n");
 	}
+
 
 	private static void itemTypeMenu1() {
 		System.out.println("1. View Currency");
@@ -140,12 +138,12 @@ public class C206_CaseStudy {
 	}
 	// ================================= Option 1 View
 	// =================================
-	
-	//View currency - faz
-	
-	//View holdings - royce
-	
-	//View company money - ys
+
+	// View currency - faz
+
+	// View holdings - royce
+
+	// View company money - ys
 	// Assuming original company money is in sgd currency
 //	double EURcompanyMoney = 100000.00;
 //	for(int i = 0;i<currencyList.size();i++)
@@ -161,18 +159,17 @@ public class C206_CaseStudy {
 //		System.out.println(" ");
 //	}
 
-
 	// ================================= Option 2 View
 	// =================================
-	
-	//add currency - faz
+
+	// add currency - faz
 	public static Currency inputCurrency() {
 		String currencyISO = Helper.readString("Enter currency ISO > ");
 		String currencyName = Helper.readString("Enter currency name  > ");
 		double buyRate = Helper.readDouble("Enter buy rate > ");
 		double sellRate = Helper.readDouble("Enter sell rate >");
 
-		Currency c = new Currency(currencyISO, currencyName, buyRate, sellRate);
+		Currency c = new Currency(currencyISO,  currencyName, buyRate, sellRate);
 		return c;
 
 	}
@@ -182,24 +179,23 @@ public class C206_CaseStudy {
 		currencyList.add(c);
 		System.out.println("Currency added!");
 	}
-	
-	//add holdings - royce
-	
-	//add walk in exchange transaction - izwan
-	
+
+	// add holdings - royce
+
+	// add walk in exchange transaction - izwan
 
 	// ================================= Option 3 Delete
 	// =================================
-	
-	//delete currency - faz
-	
-	//delete holdings - faz
+
+	// delete currency - faz
+
+	// delete holdings - faz
 
 	// ================================= Option 4 Search
 	// =================================
-	
-	//search holdings -ys
-	
-	//search currecncy rate - dom
+
+	// search holdings -ys
+
+	// search currecncy rate - dom
 
 }

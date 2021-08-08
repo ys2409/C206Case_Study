@@ -5,7 +5,7 @@ public class Currency {
 	private double buyRate;
 	private double sellRate;
 	
-	public Currency(String currencyISO, String currencyName, double buyRate, double sellRate) {
+	public Currency(String currencyISO,String currencyName, double buyRate, double sellRate) {
 		this.currencyISO = currencyISO;
 		this.currencyName = currencyName;
 		this.buyRate = buyRate;
@@ -27,9 +27,8 @@ public class Currency {
 	public double getSellRate() {
 		return sellRate;
 	}
-	
+}
 	
 	
 	
 
-}
