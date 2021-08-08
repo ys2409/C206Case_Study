@@ -12,13 +12,30 @@ public class C206_CaseStudy {
 
 		int option = 0;
 
-		while (option != 6) {
+		while (option != 5) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
 				// View all items
+				C206_CaseStudy.setHeader("View");
+				itemTypeMenu1();
+
+				int itemType = Helper.readInt("Enter option to select item type > ");
+
+				if (itemType == 1) {
+					// View currency
+
+				} else if (itemType == 2) {
+					// View holdings
+
+				} else if (itemType == 3) {
+					// View company money
+
+				} else {
+					System.out.println("Invalid type");
+				}
 
 			} else if (option == 2) {
 				// Add a new item
@@ -28,7 +45,7 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// Add a currency
+					// Add currency
 					Currency c = inputCurrency();
 					C206_CaseStudy.addCurrency(currencyList, c);
 
@@ -43,48 +60,53 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-				// Loan item
 				C206_CaseStudy.setHeader("DELETE");
+				itemTypeMenu2();
+
+				int itemType = Helper.readInt("Enter option to select item type > ");
+
+				if (itemType == 1) {
+					// delete currency
+
+				} else if (itemType == 2) {
+					// delete holdings
+
+				} else {
+					System.out.println("Invalid type");
+				}
+
 			}
 
 			else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
+				itemTypeMenu3();
 
-			} else if (option == 5) {
-				C206_CaseStudy.setHeader("VIEW COMPANY $$");
+				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				//Assuming original company money is in sgd currency
-				double EURcompanyMoney = 100000.00;
-				for (int i = 0; i < currencyList.size(); i++) {
-					if (currencyList.get(i).getCurrencyISO() == "EUR") {
-						System.out.println("Original Currency: " + currencyList.get(i).getCurrencyName());
-						System.out.println(
-								currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", EURcompanyMoney));
-					} else {
-						double convertedAmt = EURcompanyMoney * currencyList.get(i).getSellRate();
-						System.out.println("Currency: " + currencyList.get(i).getCurrencyName());
-						System.out.println(
-								currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", convertedAmt));
-					}
-					System.out.println(" ");
+				if (itemType == 1) {
+					// Search for holding
+
+				} else if (itemType == 2) {
+					// Search currency rates
+
+				} else {
+					System.out.println("Invalid type");
 				}
 
 			} else {
-				System.out.println("Bye!");
+				System.out.println("BYE!");
 			}
-
 		}
 
 	}
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("MONEY EXCHANGE MANAGEMENT SYSTEM");
-		System.out.println("1. View list of currencies");
-		System.out.println("2. Add new currencies");
-		System.out.println("3.Delete currency");
-		System.out.println("4. Search for holding of currency");
-		System.out.println("5. View how much money company is currently holding");
-		System.out.println("6. Quit");
+		System.out.println("1. View All");
+		System.out.println("2. Add All");
+		System.out.println("3. Delete All ");
+		System.out.println("4. Search All");
+		System.out.println("5. Quit");
 		Helper.line(80, "-");
 
 	}
@@ -95,6 +117,22 @@ public class C206_CaseStudy {
 		System.out.println("3. Add walk in exchange transactions");
 	}
 
+	private static void itemTypeMenu1() {
+		System.out.println("1. View Currency");
+		System.out.println("2. View Holdings");
+		System.out.println("3. View company money");
+	}
+
+	private static void itemTypeMenu2() {
+		System.out.println("1. Delete Currency");
+		System.out.println("2. Delete Holdings");
+	}
+
+	private static void itemTypeMenu3() {
+		System.out.println("1. Search for holdings");
+		System.out.println("2. Search for currency rate");
+	}
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -102,9 +140,32 @@ public class C206_CaseStudy {
 	}
 	// ================================= Option 1 View
 	// =================================
+	
+	//View currency - faz
+	
+	//View holdings - royce
+	
+	//View company money - ys
+	// Assuming original company money is in sgd currency
+//	double EURcompanyMoney = 100000.00;
+//	for(int i = 0;i<currencyList.size();i++)
+//	{
+//		if (currencyList.get(i).getCurrencyISO() == "EUR") {
+//			System.out.println("Original Currency: " + currencyList.get(i).getCurrencyName());
+//			System.out.println(currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", EURcompanyMoney));
+//		} else {
+//			double convertedAmt = EURcompanyMoney * currencyList.get(i).getSellRate();
+//			System.out.println("Currency: " + currencyList.get(i).getCurrencyName());
+//			System.out.println(currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", convertedAmt));
+//		}
+//		System.out.println(" ");
+//	}
+
 
 	// ================================= Option 2 View
 	// =================================
+	
+	//add currency - faz
 	public static Currency inputCurrency() {
 		String currencyISO = Helper.readString("Enter currency ISO > ");
 		String currencyName = Helper.readString("Enter currency name  > ");
@@ -121,11 +182,24 @@ public class C206_CaseStudy {
 		currencyList.add(c);
 		System.out.println("Currency added!");
 	}
+	
+	//add holdings - royce
+	
+	//add walk in exchange transaction - izwan
+	
 
 	// ================================= Option 3 Delete
 	// =================================
+	
+	//delete currency - faz
+	
+	//delete holdings - faz
 
 	// ================================= Option 4 Search
 	// =================================
+	
+	//search holdings -ys
+	
+	//search currecncy rate - dom
 
 }
