@@ -44,7 +44,6 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-
 			} else if (option == 2) {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");

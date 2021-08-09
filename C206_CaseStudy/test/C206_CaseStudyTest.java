@@ -69,7 +69,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllCurrencylist", testOutput, allCurrency);
 
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 	}
