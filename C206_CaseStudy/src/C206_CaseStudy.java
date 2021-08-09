@@ -29,6 +29,7 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// View currency -faz
+					C206_CaseStudy.viewAllCurrency(currencyList);
 
 				} else if (itemType == 2) {
 					// View holdings -royce
@@ -161,6 +162,26 @@ public class C206_CaseStudy {
 	// =================================
 
 	// View currency - faz
+	
+	public static String retrieveAllCurrency(ArrayList<Currency> currencyList) {
+		String output = "";
+
+		for (int i = 0; i < currencyList.size(); i++) {
+
+			output += String.format("%-15s %-20s %-15.2f %-20.2f\n", currencyList.get(i).getCurrencyISO(),
+					currencyList.get(i).getCurrencyName(),currencyList.get(i).getBuyRate(),
+					currencyList.get(i).getSellRate());
+		}
+		return output;
+	}
+
+	public static void viewAllCurrency(ArrayList<Currency> currencyList) {
+		C206_CaseStudy.setHeader("CURRENCY LIST");
+		String output = String.format("%-15s %-20s %-15s %-20s\n", "CURRENCY ISO", "CURRENCY NAME", "BUY RATE",
+				"SELL RATE");
+		output += retrieveAllCurrency(currencyList);
+		System.out.println(output);
+	}
 
 	// View holdings - royce
 
