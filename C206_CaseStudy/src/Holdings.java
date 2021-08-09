@@ -14,5 +14,9 @@ public class Holdings {
 	public double getHoldings() {
 		return holdings;
 	}
+	public void setHoldings(double holdings) {
+		this.holdings = holdings;
+	}
+	
 
 }
