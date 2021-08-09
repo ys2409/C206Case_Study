@@ -70,10 +70,7 @@ public class C206_CaseStudy {
 						}
 					}
 
-				} else if (itemType == 3) {
-					// Add walk in exchange transaction - izwan
-
-				} else {
+				}  else {
 					System.out.println("Invalid type");
 				}
 
