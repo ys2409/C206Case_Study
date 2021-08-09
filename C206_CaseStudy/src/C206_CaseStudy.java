@@ -1,7 +1,8 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -15,7 +16,7 @@ public class C206_CaseStudy {
 
 		int option = 0;
 
-		while (option != 5) {
+		while (option != 6) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
@@ -106,7 +107,24 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-			} else {
+			}else if(option==5) {
+				itemTypeMenu4();
+				int itemType = Helper.readInt("Enter option to select item type > ");
+				if(itemType==1) {
+				double amount = Helper.readDouble("Enter amount > ");
+				String ConverTo = Helper.readString("Enter convert to currency ISO > ");
+				double rate = findSellRate(ConverTo,currencyList);
+				double convertedAmt = checkCurrencySell(amount,rate);
+				converter(amount,ConverTo,convertedAmt);
+				}else if(itemType==2) {
+					double amount = Helper.readDouble("Enter amount > ");
+					String currency = Helper.readString("Enter currency ISO > ");
+					double rate = findBuyRate(currency,currencyList);
+					double convertedAmt = checkCurrencyBuy(amount,rate);
+					converter2(currency,amount,convertedAmt);
+				}
+				
+			}else {
 				System.out.println("BYE!");
 			}
 
@@ -120,14 +138,14 @@ public class C206_CaseStudy {
 		System.out.println("2. Add All");
 		System.out.println("3. Delete All ");
 		System.out.println("4. Search All");
-		System.out.println("5. Quit");
+		System.out.println("5. Add Walk in transactions");
+		System.out.println("6. Quit");
 
 	}
 
 	private static void itemTypeMenu() {
 		System.out.println("1. Add Currency");
 		System.out.println("2. Add Holdings");
-		System.out.println("3. Add walk in exchange transactions \n");
 	}
 
 	private static void itemTypeMenu1() {
@@ -143,6 +161,10 @@ public class C206_CaseStudy {
 	private static void itemTypeMenu3() {
 		System.out.println("1. Search for holdings");
 		System.out.println("2. Search for currency rate");
+	}
+	private static void itemTypeMenu4() {
+		System.out.println("1. SELL");
+		System.out.println("2. BUY");
 	}
 
 	public static void setHeader(String header) {
@@ -217,6 +239,60 @@ public class C206_CaseStudy {
 	// add holdings - royce
 
 	// add walk in exchange transaction - izwan
+	private static void converter(double amount,String ConverTo,double convertedAmt) {
+		String output = "";
+		String currency = "SGD";
+			if(convertedAmt == 0) {
+				System.out.println("Invalid currency entered!");
+			}else {
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
+			String date = LocalDateTime.now().format(format);
+			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n",date,currency,amount,ConverTo,convertedAmt);
+			System.out.println(output);
+			}}
+	private static void converter2(String currency,double amount,double convertedAmt) {
+			//BUY currency
+			String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Received");
+			String ConverTo = "SGD";
+			if(convertedAmt == 0) {
+				System.out.println("Invalid currency entered!");
+			}else {
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
+			String date = LocalDateTime.now().format(format);
+			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n",date,currency,amount,ConverTo,convertedAmt);
+			System.out.println(output);
+			}
+	}
+	private static double checkCurrencySell(double amount,double rate) {
+		double conversion = 0;
+		conversion = amount*rate;
+		return conversion;
+		}
+	private static double checkCurrencyBuy(double amount,double rate) {
+		double conversion = 0;
+		conversion = amount*rate;
+		return conversion;
+		}
+	public static double findBuyRate(String currency,ArrayList<Currency> currencyList) {
+		double Buyrate = 0;
+		double SGDRate = 2.8;
+		for (int i = 0; i < currencyList.size(); i++) {
+			if(currencyList.get(i).getCurrencyISO().equals(currency)) {
+				Buyrate = currencyList.get(i).getBuyRate()/SGDRate;
+			}
+		}
+		return Buyrate;
+	}
+	public static double findSellRate(String currency,ArrayList<Currency> currencyList) {
+		double Sellrate = 0;
+		double SGDRate = 3.4;
+		for (int i = 0; i < currencyList.size(); i++) {
+			if(currencyList.get(i).getCurrencyISO().equals(currency)) {
+				Sellrate = currencyList.get(i).getBuyRate()/SGDRate;
+			}
+		}
+		return Sellrate;
+	}
 
 	// ================================= Option 3 Delete
 	// =================================
