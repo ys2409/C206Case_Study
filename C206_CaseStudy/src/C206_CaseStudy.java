@@ -41,9 +41,6 @@ public class C206_CaseStudy {
 					}
 					
 
-				} else if (itemType == 3) {
-					// View company money -ys
-
 				} else {
 					System.out.println("Invalid type");
 				}
