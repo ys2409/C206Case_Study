@@ -44,6 +44,8 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Currency arraylist size is 2?", 2, currencyList.size());
 	}
 	
+	
+	
 	@After
 	public void tearDown() throws Exception {
 	}
