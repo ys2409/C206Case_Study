@@ -8,6 +8,7 @@ public class C206_CaseStudy {
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 		ArrayList<Holdings> holdingList = new ArrayList<Holdings>();
+		ArrayList<transaction> transactionList = new ArrayList<transaction>();
 
 		holdingList.add(new Holdings(100000.00, "SGD"));
 		holdingList.add(new Holdings(100000.00, "EUR"));
@@ -139,6 +140,8 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 			} else if (option == 5) {
+				DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
+				String date = LocalDateTime.now().format(format);
 				itemTypeMenu4();
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
@@ -146,13 +149,21 @@ public class C206_CaseStudy {
 					String ConverTo = Helper.readString("Enter convert to currency ISO > ");
 					double rate = findSellRate(ConverTo, currencyList);
 					double convertedAmt = checkCurrencySell(amount, rate);
-					converter(amount, ConverTo, convertedAmt);
+					converter(amount, ConverTo, convertedAmt,transactionList);
+					transactionList.add(new transaction(date,"SGD",amount,ConverTo,convertedAmt));
 				} else if (itemType == 2) {
 					double amount = Helper.readDouble("Enter amount > ");
 					String currency = Helper.readString("Enter currency ISO > ");
 					double rate = findBuyRate(currency, currencyList);
 					double convertedAmt = checkCurrencyBuy(amount, rate);
-					converter2(currency, amount, convertedAmt);
+					converter2(currency, amount, convertedAmt,transactionList);
+					transactionList.add(new transaction(date,currency,amount,"SGD",convertedAmt));
+				}else if(itemType==3) {
+					String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");
+					for(int x = 0;x<transactionList.size();x++) {
+						output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", transactionList.get(x).getDate(),transactionList.get(x).getCurrency(),
+								transactionList.get(x).getAmount(), transactionList.get(x).getConverted(),transactionList.get(x).getReceived());
+					}System.out.println(output);
 				}
 
 			} else {
@@ -198,6 +209,7 @@ public class C206_CaseStudy {
 	private static void itemTypeMenu4() {
 		System.out.println("1. SELL");
 		System.out.println("2. BUY");
+		System.out.println("3. View Transaction List");
 	}
 
 	public static void setHeader(String header) {
@@ -272,8 +284,9 @@ public class C206_CaseStudy {
 	// add holdings - royce
 
 	// add walk in exchange transaction - izwan
-	private static void converter(double amount, String ConverTo, double convertedAmt) {
-		String output = "";
+	//SELL currency
+	private static void converter(double amount, String ConverTo, double convertedAmt,ArrayList<transaction> transactionList) {
+		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");;
 		String currency = "SGD";
 		if (convertedAmt == 0) {
 			System.out.println("Invalid currency entered!");
@@ -283,13 +296,14 @@ public class C206_CaseStudy {
 			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", date, currency, amount, ConverTo,
 					convertedAmt);
 			System.out.println(output);
+		}for(int x = 1;x<transactionList.size();x++) {
+			System.out.println(transactionList.get(x).getAmount());
 		}
 	}
 
-	private static void converter2(String currency, double amount, double convertedAmt) {
+	private static void converter2(String currency, double amount, double convertedAmt, ArrayList<transaction> transactionList) {
 		// BUY currency
-		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n", "Date", "Currency", "Amount", "Currency",
-				"Received");
+		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");
 		String ConverTo = "SGD";
 		if (convertedAmt == 0) {
 			System.out.println("Invalid currency entered!");
@@ -301,7 +315,6 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 	}
-
 	private static double checkCurrencySell(double amount, double rate) {
 		double conversion = 0;
 		conversion = amount * rate;

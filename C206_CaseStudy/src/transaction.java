@@ -15,7 +15,7 @@ public class transaction {
 		public String getDate() {
 			return date;
 		}
-		public String currency() {
+		public String getCurrency() {
 			return currency;
 		}
 		public double getAmount() {
@@ -24,7 +24,7 @@ public class transaction {
 		public String getConverted() {
 			return converted;
 		}
-		public double received() {
+		public double getReceived() {
 			return received;
 		}
 
