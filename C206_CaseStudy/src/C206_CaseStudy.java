@@ -6,7 +6,10 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
-
+		ArrayList<Holdings> holdingList = new ArrayList<Holdings>();
+        
+		holdingList.add(new Holdings(100000.00,"SGD"));
+		holdingList.add(new Holdings(100000.00,"EUR"));
 		currencyList.add(new Currency("SGD", "Singapore", 2.8, 3.4));
 		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
 
@@ -26,9 +29,17 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// View currency -faz
+					C206_CaseStudy.viewAllCurrency(currencyList);
 
 				} else if (itemType == 2) {
 					// View holdings -royce
+					Helper.line(80, "-");
+					System.out.println("HOLDINGS HELD BY COMPANY");
+					Helper.line(80, "-");
+					for(int i = 0; i<holdingList.size(); i++) {
+						System.out.println("We currently hold: " + holdingList.get(i).getHoldings() +" "+ holdingList.get(i).getCurrencyISO());
+					}
+					
 
 				} else if (itemType == 3) {
 					// View company money -ys
@@ -52,6 +63,17 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// Add holdings -royce
+					String addISO = Helper.readString("Enter ISO > ");
+					double addOption = Helper.readDouble("How much do you want to add > ");
+					
+					for(int i = 0; i<holdingList.size(); i++) {
+						if(addISO == holdingList.get(i).getCurrencyISO()) {
+							double updatedHoldings =holdingList.get(i).getHoldings() + addOption;
+							System.out.println("We now hold:  "+ updatedHoldings +" "+ holdingList.get(i).getCurrencyISO());
+						}
+					}
+					
+					
 
 				} else if (itemType == 3) {
 					// Add walk in exchange transaction - izwan
@@ -140,6 +162,26 @@ public class C206_CaseStudy {
 	// =================================
 
 	// View currency - faz
+	
+	public static String retrieveAllCurrency(ArrayList<Currency> currencyList) {
+		String output = "";
+
+		for (int i = 0; i < currencyList.size(); i++) {
+
+			output += String.format("%-15s %-20s %-15.2f %-20.2f\n", currencyList.get(i).getCurrencyISO(),
+					currencyList.get(i).getCurrencyName(),currencyList.get(i).getBuyRate(),
+					currencyList.get(i).getSellRate());
+		}
+		return output;
+	}
+
+	public static void viewAllCurrency(ArrayList<Currency> currencyList) {
+		C206_CaseStudy.setHeader("CURRENCY LIST");
+		String output = String.format("%-15s %-20s %-15s %-20s\n", "CURRENCY ISO", "CURRENCY NAME", "BUY RATE",
+				"SELL RATE");
+		output += retrieveAllCurrency(currencyList);
+		System.out.println(output);
+	}
 
 	// View holdings - royce
 
@@ -179,6 +221,7 @@ public class C206_CaseStudy {
 		currencyList.add(c);
 		System.out.println("Currency added!");
 	}
+	
 
 	// add holdings - royce
 
@@ -199,3 +242,4 @@ public class C206_CaseStudy {
 	// search currecncy rate - dom
 
 }
+
