@@ -100,6 +100,21 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// Search for holding - ys
+					String currIso = Helper.readString("Enter Currency ISO to Search > \n");
+					for(int x = 0; x < holdingList.size(); x++) {
+						if(holdingList.get(x).getCurrencyISO().equalsIgnoreCase(currIso)) {
+							if(holdingList.get(x).getCurrencyISO().equalsIgnoreCase("SGD")) {
+								System.out.println("SGD" + holdingList.get(x).getHoldings());
+							}else {
+								System.out.println(holdingList.get(x).getCurrencyISO() + holdingList.get(x).getHoldings());
+								
+								double convertToSGD = holdingList.get(x).getHoldings() * 3.4;
+								
+								System.out.println("SGD" + convertToSGD);
+
+							}
+						}
+					}
 
 				} else if (itemType == 2) {
 					// Search currency rates - dom
