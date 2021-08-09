@@ -11,8 +11,11 @@ public class C206_CaseStudy {
 
 		holdingList.add(new Holdings(100000.00, "SGD"));
 		holdingList.add(new Holdings(100000.00, "EUR"));
+		holdingList.add(new Holdings(100000.00, "MYR"));
 		currencyList.add(new Currency("SGD", "Singapore", 2.8, 3.4));
 		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
+		currencyList.add(new Currency("MYR", "Malaysia", 2.0, 3.8));
+
 
 		int option = 0;
 
@@ -40,6 +43,20 @@ public class C206_CaseStudy {
 					for (int i = 0; i < holdingList.size(); i++) {
 						System.out.println("We currently hold: " + holdingList.get(i).getHoldings() + " "
 								+ holdingList.get(i).getCurrencyISO());
+					}
+
+				} else if (itemType == 3) {
+					for (int i = 0; i < holdingList.size(); i++) {
+						if (holdingList.get(i).getCurrencyISO().equalsIgnoreCase("SGD")) {
+							System.out.println("SGD  SGD" + holdingList.get(i).getHoldings());
+						} else {
+
+							double convertToSGD = holdingList.get(i).getHoldings() * 3.4;
+
+							System.out.println(holdingList.get(i).getCurrencyISO() + "  SGD" + convertToSGD);
+
+						}
+
 					}
 
 				} else {
@@ -98,15 +115,16 @@ public class C206_CaseStudy {
 				if (itemType == 1) {
 					// Search for holding - ys
 					String currIso = Helper.readString("Enter Currency ISO to Search > \n");
-					for(int x = 0; x < holdingList.size(); x++) {
-						if(holdingList.get(x).getCurrencyISO().equalsIgnoreCase(currIso)) {
-							if(holdingList.get(x).getCurrencyISO().equalsIgnoreCase("SGD")) {
+					for (int x = 0; x < holdingList.size(); x++) {
+						if (holdingList.get(x).getCurrencyISO().equalsIgnoreCase(currIso)) {
+							if (holdingList.get(x).getCurrencyISO().equalsIgnoreCase("SGD")) {
 								System.out.println("SGD" + holdingList.get(x).getHoldings());
-							}else {
-								System.out.println(holdingList.get(x).getCurrencyISO() + holdingList.get(x).getHoldings());
-								
+							} else {
+								System.out.println(
+										holdingList.get(x).getCurrencyISO() + holdingList.get(x).getHoldings());
+
 								double convertToSGD = holdingList.get(x).getHoldings() * 3.4;
-								
+
 								System.out.println("SGD" + convertToSGD);
 
 							}
@@ -119,24 +137,24 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-			}else if(option==5) {
+			} else if (option == 5) {
 				itemTypeMenu4();
 				int itemType = Helper.readInt("Enter option to select item type > ");
-				if(itemType==1) {
-				double amount = Helper.readDouble("Enter amount > ");
-				String ConverTo = Helper.readString("Enter convert to currency ISO > ");
-				double rate = findSellRate(ConverTo,currencyList);
-				double convertedAmt = checkCurrencySell(amount,rate);
-				converter(amount,ConverTo,convertedAmt);
-				}else if(itemType==2) {
+				if (itemType == 1) {
+					double amount = Helper.readDouble("Enter amount > ");
+					String ConverTo = Helper.readString("Enter convert to currency ISO > ");
+					double rate = findSellRate(ConverTo, currencyList);
+					double convertedAmt = checkCurrencySell(amount, rate);
+					converter(amount, ConverTo, convertedAmt);
+				} else if (itemType == 2) {
 					double amount = Helper.readDouble("Enter amount > ");
 					String currency = Helper.readString("Enter currency ISO > ");
-					double rate = findBuyRate(currency,currencyList);
-					double convertedAmt = checkCurrencyBuy(amount,rate);
-					converter2(currency,amount,convertedAmt);
+					double rate = findBuyRate(currency, currencyList);
+					double convertedAmt = checkCurrencyBuy(amount, rate);
+					converter2(currency, amount, convertedAmt);
 				}
-				
-			}else {
+
+			} else {
 				System.out.println("BYE!");
 			}
 
@@ -163,6 +181,7 @@ public class C206_CaseStudy {
 	private static void itemTypeMenu1() {
 		System.out.println("1. View Currency");
 		System.out.println("2. View Holdings");
+		System.out.println("3. All currencies in SGD value");
 	}
 
 	private static void itemTypeMenu2() {
@@ -174,6 +193,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Search for holdings");
 		System.out.println("2. Search for currency rate");
 	}
+
 	private static void itemTypeMenu4() {
 		System.out.println("1. SELL");
 		System.out.println("2. BUY");
@@ -251,56 +271,65 @@ public class C206_CaseStudy {
 	// add holdings - royce
 
 	// add walk in exchange transaction - izwan
-	private static void converter(double amount,String ConverTo,double convertedAmt) {
+	private static void converter(double amount, String ConverTo, double convertedAmt) {
 		String output = "";
 		String currency = "SGD";
-			if(convertedAmt == 0) {
-				System.out.println("Invalid currency entered!");
-			}else {
+		if (convertedAmt == 0) {
+			System.out.println("Invalid currency entered!");
+		} else {
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
 			String date = LocalDateTime.now().format(format);
-			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n",date,currency,amount,ConverTo,convertedAmt);
+			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", date, currency, amount, ConverTo,
+					convertedAmt);
 			System.out.println(output);
-			}}
-	private static void converter2(String currency,double amount,double convertedAmt) {
-			//BUY currency
-			String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Received");
-			String ConverTo = "SGD";
-			if(convertedAmt == 0) {
-				System.out.println("Invalid currency entered!");
-			}else {
-			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
-			String date = LocalDateTime.now().format(format);
-			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n",date,currency,amount,ConverTo,convertedAmt);
-			System.out.println(output);
-			}
+		}
 	}
-	private static double checkCurrencySell(double amount,double rate) {
-		double conversion = 0;
-		conversion = amount*rate;
-		return conversion;
+
+	private static void converter2(String currency, double amount, double convertedAmt) {
+		// BUY currency
+		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n", "Date", "Currency", "Amount", "Currency",
+				"Received");
+		String ConverTo = "SGD";
+		if (convertedAmt == 0) {
+			System.out.println("Invalid currency entered!");
+		} else {
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
+			String date = LocalDateTime.now().format(format);
+			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", date, currency, amount, ConverTo,
+					convertedAmt);
+			System.out.println(output);
 		}
-	private static double checkCurrencyBuy(double amount,double rate) {
+	}
+
+	private static double checkCurrencySell(double amount, double rate) {
 		double conversion = 0;
-		conversion = amount*rate;
+		conversion = amount * rate;
 		return conversion;
-		}
-	public static double findBuyRate(String currency,ArrayList<Currency> currencyList) {
+	}
+
+	private static double checkCurrencyBuy(double amount, double rate) {
+		double conversion = 0;
+		conversion = amount * rate;
+		return conversion;
+	}
+
+	public static double findBuyRate(String currency, ArrayList<Currency> currencyList) {
 		double Buyrate = 0;
 		double SGDRate = 2.8;
 		for (int i = 0; i < currencyList.size(); i++) {
-			if(currencyList.get(i).getCurrencyISO().equals(currency)) {
-				Buyrate = currencyList.get(i).getBuyRate()/SGDRate;
+			if (currencyList.get(i).getCurrencyISO().equals(currency)) {
+				Buyrate = currencyList.get(i).getBuyRate() / SGDRate;
 			}
 		}
 		return Buyrate;
 	}
-	public static double findSellRate(String currency,ArrayList<Currency> currencyList) {
+
+	public static double findSellRate(String currency, ArrayList<Currency> currencyList) {
 		double Sellrate = 0;
 		double SGDRate = 3.4;
 		for (int i = 0; i < currencyList.size(); i++) {
-			if(currencyList.get(i).getCurrencyISO().equals(currency)) {
-				Sellrate = currencyList.get(i).getBuyRate()/SGDRate;
+			if (currencyList.get(i).getCurrencyISO().equals(currency)) {
+				Sellrate = currencyList.get(i).getBuyRate() / SGDRate;
 			}
 		}
 		return Sellrate;
