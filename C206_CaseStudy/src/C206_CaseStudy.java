@@ -16,7 +16,6 @@ public class C206_CaseStudy {
 		currencyList.add(new Currency("EUR", "Europe", 3.0, 3.5));
 		currencyList.add(new Currency("MYR", "Malaysia", 2.0, 3.8));
 
-
 		int option = 0;
 
 		while (option != 6) {
@@ -87,7 +86,7 @@ public class C206_CaseStudy {
 						}
 					}
 
-				}  else {
+				} else {
 					System.out.println("Invalid type");
 				}
 
@@ -99,6 +98,8 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// delete currency - faz
+
+					C206_CaseStudy.deleteCurrency(currencyList);
 
 				} else if (itemType == 2) {
 					// delete holdings - royce
@@ -340,7 +341,19 @@ public class C206_CaseStudy {
 
 	// delete currency - faz
 
-	// delete holdings - faz
+	public static void deleteCurrency(ArrayList<Currency> currencyList) {
+		String ISO = Helper.readString("Enter currency ISO > ");
+
+		for (int x = 0; x < currencyList.size(); x++) {
+			if (currencyList.get(x).getCurrencyISO().equalsIgnoreCase(ISO)) {
+				currencyList.remove(x);
+				System.out.println("Currency is removed!");
+			} 
+			
+		}
+	}
+
+	// delete holdings - royce
 
 	// ================================= Option 4 Search
 	// =================================
