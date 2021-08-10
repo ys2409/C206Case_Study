@@ -105,6 +105,18 @@ public class C206_CaseStudyTest {
 		System.out.println(x);
 		assertEquals(x,10200.0,holdingList.get(0).getHoldings());
 	}
+	@Test
+	  public void testRedHoldings() {
+	    assertNotNull("Test if there is an arraylist for holding list", holdingList);
+	    
+	    holdingList.add(h1);
+	    assertSame("Test if holdingList size is 1",holdingList.size(),1);
+	    
+	    C206_CaseStudy.redHoldings(holdingList, 200.0,"EUR");
+	    double x = C206_CaseStudy.holdingAmt(holdingList, "EUR");
+	    System.out.println(x);
+	    assertEquals(x,9800.0,holdingList.get(0).getHoldings());  
+	  }
 	//izwan
 	@Test
 	public void TestBuyTransaction() {
