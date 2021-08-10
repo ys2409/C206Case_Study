@@ -96,7 +96,7 @@ public class C206_CaseStudyTest {
 		System.out.println(x);
 		assertEquals(x,10200.0,holdingList.get(0).getHoldings());
 	}
-	//izwan
+	//Iz
 	@Test
 	public void TestBuyTransaction() {
 		C206_CaseStudy.addCurrency(currencyList, c2);
