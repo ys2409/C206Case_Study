@@ -334,17 +334,18 @@ public class C206_CaseStudy {
 
 	public static void deleteCurrency(ArrayList<Currency> currencyList) {
 	    String ISO = Helper.readString("Enter currency ISO > ");
+	    int check = 0;
 
 	    for (int x = 0; x < currencyList.size(); x++) {
 	      if (currencyList.get(x).getCurrencyISO().equalsIgnoreCase(ISO)) {
 	        currencyList.remove(x);
 	        System.out.println("Currency is removed!");
-	      } 
-	      else {
+	        check = 1;
+	      } }
+	    if(check == 0){
 	        System.out.println("No such currency");
 	      }
 	      
-	    }
 	  }
 	// delete holdings - royce
 	
