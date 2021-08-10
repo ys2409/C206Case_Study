@@ -89,6 +89,15 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteCurrency() {
 		
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid Currency arraylist to add to", currencyList);
+		
+		C206_CaseStudy.deleteCurrency(currencyList);
+		assertEquals("Check that ArrayList size is 2",2,currencyList.size());
+		
+		C206_CaseStudy.deleteCurrency(currencyList);
+		assertSame("Check that ArrayList size is 1",1,currencyList.size());
+		
 	}
 	
 	
@@ -105,6 +114,7 @@ public class C206_CaseStudyTest {
 		System.out.println(x);
 		assertEquals(x,10200.0,holdingList.get(0).getHoldings());
 	}
+	//royce
 	@Test
 	  public void testRedHoldings() {
 	    assertNotNull("Test if there is an arraylist for holding list", holdingList);
@@ -117,6 +127,7 @@ public class C206_CaseStudyTest {
 	    System.out.println(x);
 	    assertEquals(x,9800.0,holdingList.get(0).getHoldings());  
 	  }
+	
 	//izwan
 	@Test
 	public void TestBuyTransaction() {
