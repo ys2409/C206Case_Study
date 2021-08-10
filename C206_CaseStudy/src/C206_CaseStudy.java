@@ -99,7 +99,6 @@ public class C206_CaseStudy {
 					redHoldings(holdingList, redOption, redISO);
 
 				} 
-				
 
 			} else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
@@ -142,21 +141,18 @@ public class C206_CaseStudy {
 					String ConverTo = Helper.readString("Enter convert to currency ISO > ");
 					double rate = findSellRate(ConverTo, currencyList);
 					double convertedAmt = checkCurrencySell(amount, rate);
-					converter(amount, ConverTo, convertedAmt,transactionList);
+					converter(amount, ConverTo, convertedAmt);
 					transactionList.add(new transaction(date,"SGD",amount,ConverTo,convertedAmt));
 				} else if (itemType == 2) {
 					double amount = Helper.readDouble("Enter amount > ");
 					String currency = Helper.readString("Enter currency ISO > ");
 					double rate = findBuyRate(currency, currencyList);
 					double convertedAmt = checkCurrencyBuy(amount, rate);
-					converter2(currency, amount, convertedAmt,transactionList);
+					converter2(currency, amount, convertedAmt);
 					transactionList.add(new transaction(date,currency,amount,"SGD",convertedAmt));
 				}else if(itemType==3) {
-					String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");
-					for(int x = 0;x<transactionList.size();x++) {
-						output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", transactionList.get(x).getDate(),transactionList.get(x).getCurrency(),
-								transactionList.get(x).getAmount(), transactionList.get(x).getConverted(),transactionList.get(x).getReceived());
-					}System.out.println(output);
+					String display = displayTransaction(transactionList);
+					System.out.println(display);
 				}
 
 			} else {
@@ -261,7 +257,7 @@ public class C206_CaseStudy {
 
 	// add walk in exchange transaction - izwan
 	//SELL currency
-	private static void converter(double amount, String ConverTo, double convertedAmt,ArrayList<transaction> transactionList) {
+	public static void converter(double amount, String ConverTo, double convertedAmt) {
 		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");;
 		String currency = "SGD";
 		if (convertedAmt == 0) {
@@ -272,12 +268,10 @@ public class C206_CaseStudy {
 			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", date, currency, amount, ConverTo,
 					convertedAmt);
 			System.out.println(output);
-		}for(int x = 1;x<transactionList.size();x++) {
-			System.out.println(transactionList.get(x).getAmount());
 		}
 	}
 
-	private static void converter2(String currency, double amount, double convertedAmt, ArrayList<transaction> transactionList) {
+	public static void converter2(String currency, double amount, double convertedAmt) {
 		// BUY currency
 		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");
 		String ConverTo = "SGD";
@@ -291,13 +285,13 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 	}
-	private static double checkCurrencySell(double amount, double rate) {
+	public static double checkCurrencySell(double amount, double rate) {
 		double conversion = 0;
 		conversion = amount * rate;
 		return conversion;
 	}
 
-	private static double checkCurrencyBuy(double amount, double rate) {
+	public static double checkCurrencyBuy(double amount, double rate) {
 		double conversion = 0;
 		conversion = amount * rate;
 		return conversion;
@@ -323,6 +317,14 @@ public class C206_CaseStudy {
 			}
 		}
 		return Sellrate;
+	}
+	
+	public static String displayTransaction(ArrayList<transaction> transactionList) {
+		String output = String.format("%-26s%-10s%-8s   %-12s%-10s\n","Date","Currency","Amount","Currency","Amount(Customer receive)");
+		for(int x = 0;x<transactionList.size();x++) {
+			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", transactionList.get(x).getDate(),transactionList.get(x).getCurrency(),
+					transactionList.get(x).getAmount(), transactionList.get(x).getConverted(),transactionList.get(x).getReceived());
+		}return output;
 	}
 
 	// ================================= Option 3 Delete
