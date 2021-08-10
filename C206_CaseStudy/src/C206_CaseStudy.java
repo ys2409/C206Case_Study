@@ -2,6 +2,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import part1.Helper;
+import part1.Holdings;
+
 public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -94,10 +97,13 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// delete holdings - royce
+					String redISO = Helper.readString("Enter ISO > ");
+					double redOption = Helper.readDouble("How much do you want to reduce > ");
+					redHoldings(holdingList, redOption, redISO);
 
-				} else {
-					System.out.println("Invalid type");
-				}
+				} 
+				
+
 			} else if (option == 4) {
 				C206_CaseStudy.setHeader("SEARCH");
 				itemTypeMenu3();
@@ -375,6 +381,15 @@ public class C206_CaseStudy {
 				value = holdingList.get(i).getHoldings();
 			}
 		}return value;
+	}
+	public static void redHoldings(ArrayList<Holdings> holdingList, double redOption, String redISO) {
+		for(int i = 0; i < holdingList.size(); i++) {
+			if(redISO.equals(holdingList.get(i).getCurrencyISO())) {
+				double x = holdingList.get(i).getHoldings() - redOption;
+				holdingList.get(i).setHoldings(x);
+				System.out.println("We not hold: " + x + holdingList.get(i).getCurrencyISO());
+			}
+		}
 	}
 
 
