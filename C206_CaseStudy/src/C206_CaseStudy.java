@@ -41,7 +41,8 @@ public class C206_CaseStudy {
 					System.out.println("HOLDINGS HELD BY COMPANY");
 					Helper.line(80, "-");
 					for (int i = 0; i < holdingList.size(); i++) {
-						System.out.println("We currently hold: " + holdingList.get(i).getHoldings() + " "
+						
+						System.out.println("We currently hold:" + holdingList.get(i).getHoldings()
 								+ holdingList.get(i).getCurrencyISO());
 					}
 
@@ -76,21 +77,8 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// Add holdings -royce
-					String addISO = Helper.readString("Enter ISO > ");
-					double addOption = Helper.readDouble("How much do you want to add > ");
-
-					for (int i = 0; i < holdingList.size(); i++) {
-						if (addISO == holdingList.get(i).getCurrencyISO()) {
-							double updatedHoldings = holdingList.get(i).getHoldings() + addOption;
-							System.out.println(
-									"We now hold:  " + updatedHoldings + " " + holdingList.get(i).getCurrencyISO());
-						}
-					}
-
-				} else {
-					System.out.println("Invalid type");
+					addHoldings(holdingList);
 				}
-
 			} else if (option == 3) {
 				C206_CaseStudy.setHeader("DELETE");
 				itemTypeMenu2();
@@ -169,10 +157,10 @@ public class C206_CaseStudy {
 			} else {
 				System.out.println("BYE!");
 			}
-
+			}
 		}
-
-	}
+	
+	
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("MONEY EXCHANGE MANAGEMENT SYSTEM");
@@ -365,6 +353,22 @@ public class C206_CaseStudy {
 			
 		}
 	}
+	public static void addHoldings(ArrayList<Holdings> holdingList) {
+		String addISO = Helper.readString("Enter ISO > ");
+		double addOption = Helper.readDouble("How much do you want to add > ");
+
+		for (int i = 0; i < holdingList.size(); i++) {
+			if (addISO .equals(holdingList.get(i).getCurrencyISO())) {
+				double x  = holdingList.get(i).getHoldings() + addOption;
+				holdingList.get(i).setHoldings(x);
+				
+				System.out.println(
+						"We now hold:  " + x + " " + holdingList.get(i).getCurrencyISO());
+			}
+		}
+
+	} 
+
 
 	// delete holdings - royce
 

@@ -12,6 +12,7 @@ public class C206_CaseStudyTest {
 	
 
 	private ArrayList<Currency> currencyList;
+	private ArrayList<Holdings> holdingList;
 
 
 	public C206_CaseStudyTest() {
@@ -68,6 +69,9 @@ public class C206_CaseStudyTest {
 
 		assertEquals("Check that ViewAllCurrencylist", testOutput, allCurrency);
 
+	}
+	public void testAddHoldings() {
+		assertNotNull("Test if there holding list is empty", holdingList);
 	}
 
 	@After
