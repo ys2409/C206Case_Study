@@ -127,6 +127,21 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// Search currency rates - dom
+					String currRate = Helper.readString("Enter Currency Rate to Search > \n");
+					for (int x = 0; x < currencyList.size(); x++) {
+						if (currencyList.get(x).getCurrencyRate().equalsIgnoreCase(currRate)) {
+							if (currencyList.get(x).getCurrencyRate().equalsIgnoreCase("SGD")) {
+								System.out.println("SGD" + currencyList.get(x).getCurrencyRate());
+							} else {
+								System.out.println(
+										currencyList.get(x).getCurrencyRate() + currencyList.get(x).getCurrencyRate());
+
+								
+								System.out.println("SGD");
+
+							}
+						}
+					}
 
 				} else {
 					System.out.println("Invalid type");

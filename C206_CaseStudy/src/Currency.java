@@ -27,6 +27,14 @@ public class Currency {
 	public double getSellRate() {
 		return sellRate;
 	}
+
+	/**
+	 * @return
+	 */
+	public String getCurrencyRate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 	
 	
