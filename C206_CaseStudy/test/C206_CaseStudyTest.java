@@ -9,6 +9,7 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Currency c1;
 	private Currency c2;
+	private Holdings h1;
 	
 
 	private ArrayList<Currency> currencyList;
@@ -24,8 +25,10 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		c1 = new Currency("SGD", "Singapore", 2.8, 3.4);
 		c2 = new Currency("EUR", "Europe", 3.0, 3.5);
+		h1 = new Holdings(10000.0,"EUR");
 		
 		currencyList = new ArrayList<Currency>();
+		holdingList = new ArrayList<Holdings>();
 	}
 
 	@Test
@@ -70,8 +73,17 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllCurrencylist", testOutput, allCurrency);
 
 	}
+	@Test
 	public void testAddHoldings() {
-		assertNotNull("Test if there holding list is empty", holdingList);
+		assertNotNull("Test if there is an arraylist for holding list", holdingList);
+		
+		holdingList.add(h1);
+		assertSame("Test if holdingList size is 1",holdingList.size(),1);
+		
+		C206_CaseStudy.addHoldings(holdingList, "EUR",200.0);
+		double x = C206_CaseStudy.holdingAmt(holdingList, "EUR");
+		System.out.println(x);
+		assertEquals(x,10200.0,holdingList.get(0).getHoldings());
 	}
 
 	@After

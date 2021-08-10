@@ -77,7 +77,9 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// Add holdings -royce
-					addHoldings(holdingList);
+					String addISO = Helper.readString("Enter ISO > ");
+					double addOption = Helper.readDouble("How much do you want to add > ");
+					addHoldings(holdingList,addISO,addOption);
 				}
 			} else if (option == 3) {
 				C206_CaseStudy.setHeader("DELETE");
@@ -353,9 +355,7 @@ public class C206_CaseStudy {
 			
 		}
 	}
-	public static void addHoldings(ArrayList<Holdings> holdingList) {
-		String addISO = Helper.readString("Enter ISO > ");
-		double addOption = Helper.readDouble("How much do you want to add > ");
+	public static void addHoldings(ArrayList<Holdings> holdingList,String addISO,double addOption) {
 
 		for (int i = 0; i < holdingList.size(); i++) {
 			if (addISO .equals(holdingList.get(i).getCurrencyISO())) {
@@ -368,6 +368,14 @@ public class C206_CaseStudy {
 		}
 
 	} 
+	public static double holdingAmt(ArrayList<Holdings> holdingList, String addISO) {
+		double value = 0;
+		for(int i = 0; i<holdingList.size();i++) {
+			if(holdingList.get(i).getCurrencyISO().equals(addISO)) {
+				value = holdingList.get(i).getHoldings();
+			}
+		}return value;
+	}
 
 
 	// delete holdings - royce
