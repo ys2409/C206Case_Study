@@ -86,19 +86,21 @@ public class C206_CaseStudyTest {
 	}
 	
 	//fazlina
-//	@Test
-//	public void testDeleteCurrency() {
-//		
-//		// Test if Item list is not null but empty, so that can add a new item
-//		assertNotNull("Test if there is valid Currency arraylist to add to", currencyList);
-//		
-//		C206_CaseStudy.deleteCurrency(currencyList);
-//		assertEquals("Check that ArrayList size is 2",2,currencyList.size());
-//		
-//		C206_CaseStudy.deleteCurrency(currencyList);
-//		assertSame("Check that ArrayList size is 1",1,currencyList.size());
-//		
-//	}
+	@Test
+	public void testDeleteCurrency() {
+		
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid Currency arraylist to add to", currencyList);
+		
+		currencyList.add(c1);
+		currencyList.add(c2);
+		assertEquals("Check that ArrayList size is 2", 2, currencyList.size());
+		
+		String testCurrency = "EUR";
+		C206_CaseStudy.deleteCurrency(currencyList,testCurrency);
+		assertSame("Check that ArrayList size is 1", 1, currencyList.size());
+		
+	}
 	
 	
 	//royce

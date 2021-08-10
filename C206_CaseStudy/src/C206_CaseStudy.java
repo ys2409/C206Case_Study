@@ -89,8 +89,8 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// delete currency - faz
-
-					C206_CaseStudy.deleteCurrency(currencyList);
+					String ISO = Helper.readString("Enter currency ISO > ");
+					C206_CaseStudy.deleteCurrency(currencyList, ISO);
 
 				} else if (itemType == 2) {
 					// delete holdings - royce
@@ -363,8 +363,8 @@ public class C206_CaseStudy {
 
 	// delete currency - faz
 
-	public static void deleteCurrency(ArrayList<Currency> currencyList) {
-	    String ISO = Helper.readString("Enter currency ISO > ");
+	public static void deleteCurrency(ArrayList<Currency> currencyList,String ISO) {
+	 
 	    int check = 0;
 
 	    for (int x = 0; x < currencyList.size(); x++) {
