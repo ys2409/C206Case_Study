@@ -375,7 +375,7 @@ public class C206_CaseStudy {
 			if(redISO.equals(holdingList.get(i).getCurrencyISO())) {
 				double x = holdingList.get(i).getHoldings() - redOption;
 				holdingList.get(i).setHoldings(x);
-				System.out.println("We not hold: " + x + holdingList.get(i).getCurrencyISO());
+				System.out.println("We now hold: " + x + holdingList.get(i).getCurrencyISO());
 			}
 		}
 	}
