@@ -143,18 +143,34 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
 					double amount = Helper.readDouble("Enter amount > ");
+					if(amountCheck(amount)==true) {
 					String ConverTo = Helper.readString("Enter convert to currency ISO > ");
 					double rate = findSellRate(ConverTo, currencyList);
 					double convertedAmt = checkCurrencySell(amount, rate);
 					converter(amount, ConverTo, convertedAmt);
 					transactionList.add(new transaction(date,"SGD",amount,ConverTo,convertedAmt));
-				} else if (itemType == 2) {
+				}else {
+					if(amount==0) {
+						System.out.println("Amount must be more than 0!");
+					}else if(amount<0) {
+						System.out.println("Invalid amount entered");
+					}
+				}
+				}else if (itemType == 2) {
 					double amount = Helper.readDouble("Enter amount > ");
+					if(amountCheck(amount)==true) {
 					String currency = Helper.readString("Enter currency ISO > ");
 					double rate = findBuyRate(currency, currencyList);
 					double convertedAmt = checkCurrencyBuy(amount, rate);
 					converter2(currency, amount, convertedAmt);
 					transactionList.add(new transaction(date,currency,amount,"SGD",convertedAmt));
+				}else {
+					if(amount==0) {
+						System.out.println("Amount must be more than 0!");
+					}else if(amount<0) {
+						System.out.println("Invalid amount entered");
+					}
+				}
 				}else if(itemType==3) {
 					String display = displayTransaction(transactionList);
 					System.out.println(display);
@@ -330,6 +346,16 @@ public class C206_CaseStudy {
 			output += String.format("%-26s%-10s%-8.2f=  %-12s%-10.2f\n", transactionList.get(x).getDate(),transactionList.get(x).getCurrency(),
 					transactionList.get(x).getAmount(), transactionList.get(x).getConverted(),transactionList.get(x).getReceived());
 		}return output;
+	}
+	public static boolean amountCheck(double amt) {
+		boolean check = true;
+		if(amt==0) {
+			check = false;
+		}else if(amt<0) {
+			check=false;
+		}else {
+			check = true;
+		}return check;
 	}
 
 	// ================================= Option 3 Delete

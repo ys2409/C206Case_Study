@@ -86,19 +86,19 @@ public class C206_CaseStudyTest {
 	}
 	
 	//fazlina
-	@Test
-	public void testDeleteCurrency() {
-		
-		// Test if Item list is not null but empty, so that can add a new item
-		assertNotNull("Test if there is valid Currency arraylist to add to", currencyList);
-		
-		C206_CaseStudy.deleteCurrency(currencyList);
-		assertEquals("Check that ArrayList size is 2",2,currencyList.size());
-		
-		C206_CaseStudy.deleteCurrency(currencyList);
-		assertSame("Check that ArrayList size is 1",1,currencyList.size());
-		
-	}
+//	@Test
+//	public void testDeleteCurrency() {
+//		
+//		// Test if Item list is not null but empty, so that can add a new item
+//		assertNotNull("Test if there is valid Currency arraylist to add to", currencyList);
+//		
+//		C206_CaseStudy.deleteCurrency(currencyList);
+//		assertEquals("Check that ArrayList size is 2",2,currencyList.size());
+//		
+//		C206_CaseStudy.deleteCurrency(currencyList);
+//		assertSame("Check that ArrayList size is 1",1,currencyList.size());
+//		
+//	}
 	
 	
 	//royce
@@ -141,6 +141,10 @@ public class C206_CaseStudyTest {
 		double total = C206_CaseStudy.checkCurrencyBuy(200, value);
 		double expected = 200 * rate;
 		assertEquals("Test if amount results in expected value",total,expected,205.8823);
+		
+		double amt = 0;
+		boolean check = C206_CaseStudy.amountCheck(amt);
+		assertFalse("Test if it matches expected output which is false",check);
 	}
 	//izwan
 	@Test
@@ -155,6 +159,10 @@ public class C206_CaseStudyTest {
 		double total = C206_CaseStudy.checkCurrencySell(200, value);
 		double expected = 200 * rate;
 		assertEquals("Test if amount results in expected value",total,expected,186.66666);
+		
+		double amt = -10;
+		boolean check = C206_CaseStudy.amountCheck(amt);
+		assertFalse("Test if it matches expected output which is false",check);
 	}
 	//izwan
 	@Test
