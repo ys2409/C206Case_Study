@@ -266,6 +266,7 @@ public class C206_CaseStudy {
 
 		Currency c = new Currency(currencyISO, currencyName, buyRate, sellRate);
 		return c;
+		
 	}
 
 	public static void addCurrency(ArrayList<Currency> currencyList, Currency c) {
