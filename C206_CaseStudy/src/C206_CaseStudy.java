@@ -2,9 +2,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import part1.Helper;
-import part1.Holdings;
-
 public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -238,24 +235,8 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// View holdings - royce
 
-	// View company money - ys
-	// Assuming original company money is in sgd currency
-//	double EURcompanyMoney = 100000.00;
-//	for(int i = 0;i<currencyList.size();i++)
-//	{
-//		if (currencyList.get(i).getCurrencyISO() == "EUR") {
-//			System.out.println("Original Currency: " + currencyList.get(i).getCurrencyName());
-//			System.out.println(currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", EURcompanyMoney));
-//		} else {
-//			double convertedAmt = EURcompanyMoney * currencyList.get(i).getSellRate();
-//			System.out.println("Currency: " + currencyList.get(i).getCurrencyName());
-//			System.out.println(currencyList.get(i).getCurrencyISO() + " " + String.format("%.2f", convertedAmt));
-//		}
-//		System.out.println(" ");
-//	}
-
+	
 	// ================================= Option 2 View
 	// =================================
 
@@ -277,7 +258,6 @@ public class C206_CaseStudy {
 		System.out.println("Currency added!");
 	}
 
-	// add holdings - royce
 
 	// add walk in exchange transaction - izwan
 	//SELL currency
@@ -351,16 +331,21 @@ public class C206_CaseStudy {
 	// delete currency - faz
 
 	public static void deleteCurrency(ArrayList<Currency> currencyList) {
-		String ISO = Helper.readString("Enter currency ISO > ");
+	    String ISO = Helper.readString("Enter currency ISO > ");
 
-		for (int x = 0; x < currencyList.size(); x++) {
-			if (currencyList.get(x).getCurrencyISO().equalsIgnoreCase(ISO)) {
-				currencyList.remove(x);
-				System.out.println("Currency is removed!");
-			} 
-			
-		}
-	}
+	    for (int x = 0; x < currencyList.size(); x++) {
+	      if (currencyList.get(x).getCurrencyISO().equalsIgnoreCase(ISO)) {
+	        currencyList.remove(x);
+	        System.out.println("Currency is removed!");
+	      } 
+	      else {
+	        System.out.println("No such currency");
+	      }
+	      
+	    }
+	  }
+	// delete holdings - royce
+	
 	public static void addHoldings(ArrayList<Holdings> holdingList,String addISO,double addOption) {
 
 		for (int i = 0; i < holdingList.size(); i++) {
@@ -393,7 +378,7 @@ public class C206_CaseStudy {
 	}
 
 
-	// delete holdings - royce
+
 
 	// ================================= Option 4 Search
 	// =================================
