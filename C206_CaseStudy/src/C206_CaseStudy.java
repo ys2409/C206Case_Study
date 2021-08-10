@@ -129,20 +129,10 @@ public class C206_CaseStudy {
 					// Search currency rates - dom
 					String currRate = Helper.readString("Enter Currency Rate to Search > \n");
 					for (int x = 0; x < currencyList.size(); x++) {
-						if (currencyList.get(x).getCurrencyRate().equalsIgnoreCase(currRate)) {
-							if (currencyList.get(x).getCurrencyRate().equalsIgnoreCase("SGD")) {
-								System.out.println("SGD" + currencyList.get(x).getCurrencyRate());
-							} else {
-								System.out.println(
-										currencyList.get(x).getCurrencyRate() + currencyList.get(x).getCurrencyRate());
-
-								
-								System.out.println("SGD");
-
-							}
-						}
+						if (currencyList.get(x).getCurrencyISO().equalsIgnoreCase(currRate)) {
+								System.out.println(currRate + " BUY RATE: "+ currencyList.get(x).getBuyRate() +"\n"+ currRate + " SELL RATE: " + currencyList.get(x).getSellRate());
+							} 
 					}
-
 				} else {
 					System.out.println("Invalid type");
 				}
@@ -174,7 +164,7 @@ public class C206_CaseStudy {
 				System.out.println("BYE!");
 			}
 			}
-		}
+}
 	
 	
 
