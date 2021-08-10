@@ -41,7 +41,7 @@ public class C206_CaseStudyTest {
 		holdingList = new ArrayList<Holdings>();
 		transactionList = new ArrayList<transaction>();
 	}
-
+	//fazlina
 	@Test
 	public void testAddCurrency() {
 		// Item list is not null, so that can add a new item
@@ -58,7 +58,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCurrency(currencyList, c2);
 		assertEquals("Test that Currency arraylist size is 2?", 2, currencyList.size());
 	}
-	
+	//fazlina
 	@Test
 	public void testRetrieveAllCurrency() {
 		// Test if Item list is not null but empty, so that can add a new item
@@ -84,6 +84,15 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllCurrencylist", testOutput, allCurrency);
 
 	}
+	
+	//fazlina
+	@Test
+	public void testDeleteCurrency() {
+		
+	}
+	
+	
+	//royce
 	@Test
 	public void testAddHoldings() {
 		assertNotNull("Test if there is an arraylist for holding list", holdingList);
@@ -96,7 +105,7 @@ public class C206_CaseStudyTest {
 		System.out.println(x);
 		assertEquals(x,10200.0,holdingList.get(0).getHoldings());
 	}
-	//Iz
+	//izwan
 	@Test
 	public void TestBuyTransaction() {
 		C206_CaseStudy.addCurrency(currencyList, c2);
@@ -110,6 +119,7 @@ public class C206_CaseStudyTest {
 		double expected = 200 * rate;
 		assertEquals("Test if amount results in expected value",total,expected,205.8823);
 	}
+	//izwan
 	@Test
 	public void TestSellTransaction() {
 		C206_CaseStudy.addCurrency(currencyList, c2);
@@ -123,6 +133,7 @@ public class C206_CaseStudyTest {
 		double expected = 200 * rate;
 		assertEquals("Test if amount results in expected value",total,expected,186.66666);
 	}
+	//izwan
 	@Test
 	public void TestTransaction() {
 		assertNotNull("Test if transaction arrayList exists",transactionList);
