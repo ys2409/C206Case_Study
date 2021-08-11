@@ -376,7 +376,7 @@ public class C206_CaseStudy {
 	    if(check == 0){
 	        System.out.println("No such currency");
 	      }
-	      
+	  
 	  }
 	// delete holdings - royce
 	

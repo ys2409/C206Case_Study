@@ -99,7 +99,6 @@ public class C206_CaseStudyTest {
 		String testCurrency = "EUR";
 		C206_CaseStudy.deleteCurrency(currencyList,testCurrency);
 		assertSame("Check that ArrayList size is 1", 1, currencyList.size());
-
 	}
 	
 	
