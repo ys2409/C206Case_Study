@@ -33,7 +33,7 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		c1 = new Currency("SGD", "Singapore", 2.8, 3.4);
 		c2 = new Currency("EUR", "Europe", 3.0, 3.5);
-		h1 = new Holdings(10000.0,"EUR");
+		h1 = new Holdings(100000.0,"EUR");
 		t1 = new transaction(date,"SGD",200.00,"EUR",176.47);
 		t2 = new transaction(date,"MYR",130.00,"SGD",92.86);
 		
@@ -100,6 +100,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteCurrency(currencyList,testCurrency);
 		assertSame("Check that ArrayList size is 1", 1, currencyList.size());
 	}
+	
 	
 	
 	//royce
@@ -182,7 +183,39 @@ public class C206_CaseStudyTest {
 		String result = C206_CaseStudy.displayTransaction(transactionList);
 		assertEquals("Test if output and the result is the same",output,result);
 	}
+	//ys
+	@Test
+	public void testHoldingCurr() {
+	    assertNotNull("Test if holdingList exists", holdingList);
+	    
+	    holdingList.add(h1);
+//	    assertSame("Test if holdingList size is not 0",holdingList.size(),1);
+	    
+	      
+	    
+	    testRetrieveAllCurrency();
+		double convertToSGD = holdingList.get(0).getHoldings() * 3.4;
+//
+		System.out.println(convertToSGD);
+		assertNotNull("Test to check convertion works", convertToSGD);
+//		assertSame("Test that convertToSGD is 340000.0", convertToSGD, 340000.0);
+	    
+	    
+	  }
+	@Test
+	public void testSearch() {
+	    assertNotNull("Test if holdingList exists", holdingList);
+	    
+	    holdingList.add(h1);
+	    assertSame("Test if holdingList size is not 0",holdingList.size(),1);
+	    
+	    testRetrieveAllCurrency();
+		
+	    Double testSAmt = C206_CaseStudy.searchHoldings(holdingList, "EUR");
+		assertNotNull("Test to check search returns", testSAmt);
+	  }
 
+	
 	@After
 	public void tearDown() throws Exception {
 	}
